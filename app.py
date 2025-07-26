@@ -44,6 +44,11 @@ def download_excel(job_id):
 def index():
     return "✅ Flask API is running!", 200
 
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({"status": "ok", "message": "Flask API is alive!"}), 200
+
+
 # 🔹 3. Render에서 필수: PORT 환경변수 받기
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 10000))
